@@ -1,12 +1,12 @@
-name: Deploy to GitHub Pages
+name: Deploy Vite React app to GitHub Pages
 
 on:
   push:
     branches:
-      - main   # change to "master" if your repo uses master
+      - main   # change if your default branch is master
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,6 +23,10 @@ jobs:
 
       - name: Build project
         run: npm run build
+
+      # Fix for React Router / SPA apps
+      - name: Copy index.html to 404.html
+        run: cp dist/index.html dist/404.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
