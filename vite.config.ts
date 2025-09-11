@@ -5,7 +5,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: '/your-repo-name/', // Add this line - replace with your actual repo name
+  base: '/civic-voice-sahayak/',
+ // Add this line - replace with your actual repo name
   server: {
     host: "::",
     port: 8080,
