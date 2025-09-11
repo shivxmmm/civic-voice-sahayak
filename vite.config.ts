@@ -3,15 +3,12 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig(({ mode }) => ({
-  base: "/civic-voice-sahayak/",
+  base: mode === "production" ? "/civic-voice-sahayak/" : "/", // ✅ Only set base in production
   server: {
-    host: "::",
-    port: 8080,
+    host: "localhost",
+    port: 5173, // default vite port
   },
-  plugins: [
-    react(),
-    ...(mode === "development" ? [require("lovable-tagger").componentTagger()] : []),
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
